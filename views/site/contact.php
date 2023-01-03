@@ -8,61 +8,53 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Contact Us';
 ?>
 <div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
-    <?php else: ?>
-
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
-        <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+    <!--contact area start-->
+    <div class="contact_area section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact_message content">
+                        <h3>contact us</h3>
+                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas human. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam</p>
+                        <ul>
+                            <li><i class="fa fa-fax"></i>  Address : No 40 Baria Sreet 133/2 NewYork City</li>
+                            <li><i class="fa fa-phone"></i> <a href="#">Infor@roadthemes.com</a></li>
+                            <li><i class="fa fa-envelope-o"></i><a href="tel:0(1234)567890">0(1234) 567 890</a>  </li>
+                        </ul>
                     </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact_message form">
+                        <h3>Tell us your concern</h3>
+                        <form id="contact-form" method="POST"  action="https://template.hasthemes.com/presiden/presiden/assets/mail.php">
+                            <p>
+                                <label> Your Name (required)</label>
+                                <input name="name" placeholder="Name *" type="text">
+                            </p>
+                            <p>
+                                <label>  Your Email (required)</label>
+                                <input name="email" placeholder="Email *" type="email">
+                            </p>
+                            <p>
+                                <label>  Subject</label>
+                                <input name="subject" placeholder="Subject *" type="text">
+                            </p>
+                            <div class="contact_textarea">
+                                <label>  Your Message</label>
+                                <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>
+                            </div>
+                            <button type="submit"> Send</button>
+                            <p class="form-messege"></p>
+                        </form>
 
-                <?php ActiveForm::end(); ?>
-
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-    <?php endif; ?>
+    <!--contact area end-->
 </div>
